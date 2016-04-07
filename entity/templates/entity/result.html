@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/static/entity/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/static/entity/css/library.css" />
+    <link rel="stylesheet" type="text/css" href="/static/entity/css/component.css" />
+    <script src="/static/entity/js/library.js"></script>
+    <script src="/static/entity/js/classie.js"></script>
+    <script src="/static/entity/js/stepsForm.js"></script>
+  </head>
+  <body>
+    <div id = "container">
+      <section>
+        <form class="simform">
+            {% if entities %}
+              <p>Entities detected:</p>
+              <ul>
+                {% for entity in entities %}
+                  <li>{{ entity.0 }} : {{ entity.1 }}</li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <p>No entity found</p>
+            {% endif %}
+        </form>
+        {% include "entity/input_form.html" %}
+      </section>
+    </div>
+  </body>
+</html>

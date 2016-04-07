@@ -1,0 +1,39 @@
+<form id="theForm" class="simform" autocomplete="off" action = "/result/" method = "post">
+  {% csrf_token %}
+  <div class="simform-inner">
+    <ol class="questions">
+      <li>
+        <span><label for="q1">Enter headline</label></span>
+        <input id="q1" name="headline" type="text"/>
+      </li>
+    </ol>
+    <button class="submit" type="submit">Submit</button>
+    <div class="controls">
+      <button class="next"></button>
+      <div class="progress"></div>
+      <span class="number">
+        <span class="number-current" style="display:none;"></span>
+        <span class="number-total" style="display:none;"></span>
+      </span>
+      <span class="error-message"></span>
+    </div><!-- / controls -->
+  </div>
+</form>
+<span id="final-message"></span>
+
+<script>
+  var theForm = document.getElementById( 'theForm' );
+
+  new stepsForm( theForm, {
+    onSubmit : function( form ) {
+      // hide forms
+      for (var i = 0;i<document.forms.length;i++) {
+        document.forms[i].style.display = "none";            
+      }
+      var messageEl = document.getElementById('final-message' );
+      messageEl.innerHTML = 'Submitting';
+      classie.addClass( messageEl, 'show' );
+      form.submit();
+    }
+  } );
+</script>
